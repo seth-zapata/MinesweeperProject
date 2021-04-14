@@ -1,0 +1,4 @@
+#Home {
+	-fx-background-image:url("homeBackground.jpg");
+	-fx-background-size: 100% 100%;
+}

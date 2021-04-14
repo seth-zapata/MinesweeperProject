@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MainController">
+   <children>
+      <Pane layoutX="34.0" layoutY="42.0" prefHeight="669.0" prefWidth="884.0">
+         <children>
+            <ListView layoutX="120.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
+            <ListView layoutX="342.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
+            <Text layoutX="361.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Scores">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="back" layoutX="399.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="40.0" prefWidth="87.0" text="Back">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Text layoutX="181.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="411.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <ListView layoutX="562.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
+            <Text layoutX="626.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Text>
+            <Text layoutX="270.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Update the listViews through MainController.java (?). Improve general aesthetic if possible." wrappingWidth="406.30810546875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

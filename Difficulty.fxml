@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="751.0" prefWidth="921.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MainController">
+   <children>
+      <Pane layoutX="38.0" layoutY="41.0" prefHeight="669.0" prefWidth="845.0">
+         <children>
+            <Text layoutX="362.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="back" layoutX="380.0" layoutY="595.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="42.0" prefWidth="85.0" text="Back">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Text layoutX="84.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beginner">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text layoutX="335.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intermediate">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text layoutX="626.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text layoutX="8.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Beginner difficulty">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="281.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Intermediate difficulty">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Text layoutX="557.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Advanced difficulty">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.StartController">
+   <children>
+      <Pane layoutX="35.0" layoutY="28.0" prefHeight="696.0" prefWidth="881.0">
+         <children>
+            <Text layoutX="364.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Start">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Button fx:id="back" layoutX="752.0" layoutY="26.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="42.0" prefWidth="77.0" text="Back">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Text layoutX="259.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Implement the game in StartController.java (?). High Priority Task" wrappingWidth="363.1962890625">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Button fx:id="reset" layoutX="182.0" layoutY="545.0" mnemonicParsing="false" onAction="#changeScreenonReset" prefHeight="42.0" prefWidth="77.0" text="Reset">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="help" layoutX="584.0" layoutY="545.0" mnemonicParsing="false" onAction="#changeScreenonHelp" prefHeight="42.0" prefWidth="77.0" text="Help">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
