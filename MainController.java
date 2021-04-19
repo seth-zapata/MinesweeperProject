@@ -22,6 +22,8 @@ public class MainController {
 		FXMLLoader viewDifficulty = new FXMLLoader(getClass().getResource("Difficulty.fxml"));
 		Parent root = (Parent) viewDifficulty.load();
 		root.setId("Difficulty");
+		
+		// Controller for implementing difficulty ???
 	
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -42,6 +44,7 @@ public class MainController {
 		
 		StartController control = new StartController();
 		control = viewStart.getController();
+		// Controller implements the game
 		
 	
 		Scene scene = new Scene(root);
@@ -77,6 +80,7 @@ public class MainController {
 		FXMLLoader viewHighScore = new FXMLLoader(getClass().getResource("HighScore.fxml"));
 		Parent root = (Parent) viewHighScore.load();
 		root.setId("HighScore");
+		// Controller for instantiating score across window ???
 	
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
