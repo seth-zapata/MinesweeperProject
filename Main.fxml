@@ -15,10 +15,9 @@
                   <Font size="42.0" />
                </font>
             </Text>
-            <Button fx:id="difficulty" layoutX="216.0" layoutY="270.0" mnemonicParsing="false" onAction="#changeScreenonDifficulty" prefHeight="42.0" prefWidth="96.0" text="Difficulty" />
-            <Button fx:id="start" layoutX="216.0" layoutY="350.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="42.0" prefWidth="96.0" text="Start" />
-            <Button fx:id="rules" layoutX="216.0" layoutY="425.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="42.0" prefWidth="96.0" text="Rules" />
-            <Button fx:id="highscore" layoutX="216.0" layoutY="497.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="42.0" prefWidth="96.0" text="High Score" />
+            <Button fx:id="start" layoutX="216.0" layoutY="282.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="42.0" prefWidth="96.0" text="Start" />
+            <Button fx:id="rules" layoutX="216.0" layoutY="356.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="42.0" prefWidth="96.0" text="Rules" />
+            <Button fx:id="highscore" layoutX="216.0" layoutY="429.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="42.0" prefWidth="96.0" text="High Score" />
          </children>
       </Pane>
    </children>
