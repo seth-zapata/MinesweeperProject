@@ -1,6 +1,7 @@
 // This model file should go in the model package of the project files
 
 package model;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -41,24 +42,17 @@ public class MPApp {
 	
 	// add username to file
 	public static void addUserName(String username) throws IOException {
-		checkifFileExists("users.txt");
-		// arraylist to store usernames
-		FileWriter writer = new FileWriter("users.txt", true);
+		File file = new File("users.txt");
+
+		// if file doesn't exists make it  
+		if(!file.exists()) {
+			file.createNewFile();
+		}
+				
+		FileWriter writer = new FileWriter(file, true);
 			
 		// write username to file
 		writer.write(username + System.lineSeparator());
         writer.close();
-	}
-	
-	// checks if the file exists
-	public static void checkifFileExists(String file) throws IOException{
-		try {
-			FileInputStream checkifFileExists = new FileInputStream(file);
-			System.out.println("The file you want to read exists.");
-			checkifFileExists.close();
-		} catch (FileNotFoundException fileNotFoundException) { // file wasn't found
-			// prints details of where exception occurred in the program
-			fileNotFoundException.printStackTrace(); 
-		}
 	}
 }
