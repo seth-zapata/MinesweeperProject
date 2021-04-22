@@ -1,56 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="751.0" prefWidth="921.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MainController">
+<AnchorPane prefHeight="751.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DifficultyController">
    <children>
       <Pane layoutX="38.0" layoutY="41.0" prefHeight="669.0" prefWidth="845.0">
          <children>
-            <Text layoutX="362.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </Text>
-            <Button fx:id="back" layoutX="380.0" layoutY="595.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="42.0" prefWidth="85.0" text="Back">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8ebed9e" height="100.0" layoutX="221.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="401.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8ebed9d" height="417.0" layoutX="569.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8ebed9e" height="417.0" layoutX="301.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="590.0" layoutY="419.0" stroke="BLACK" strokeType="INSIDE" width="199.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="324.0" layoutY="419.0" stroke="BLACK" strokeType="INSIDE" width="199.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8ebed9e" height="417.0" layoutX="35.0" layoutY="150.0" stroke="BLACK" strokeType="INSIDE" width="240.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="52.0" layoutY="419.0" stroke="BLACK" strokeType="INSIDE" width="199.0" />
+            <Button fx:id="back" layoutX="381.0" layoutY="592.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="42.0" prefWidth="85.0" text="Back">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Text layoutX="84.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beginner">
+            <Text layoutX="91.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beginner">
                <font>
                   <Font size="31.0" />
                </font>
             </Text>
-            <Text layoutX="335.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intermediate">
+            <Text layoutX="334.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intermediate">
                <font>
                   <Font size="31.0" />
                </font>
             </Text>
-            <Text layoutX="626.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced">
+            <Text layoutX="621.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced">
                <font>
                   <Font size="31.0" />
                </font>
             </Text>
-            <Text layoutX="8.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Beginner difficulty">
+            <Text layoutX="329.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You know your way around a mindfieldand and can keep a calm, cool, and collected mindset when under pressure." wrappingWidth="188.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="281.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Intermediate difficulty">
+            <Button fx:id="BeginnerDifficulty" layoutX="52.0" layoutY="216.0" mnemonicParsing="false" onAction="#changeScreenonStartGameBeginner" prefHeight="193.0" prefWidth="206.0" stylesheets="@application.css">
                <font>
-                  <Font size="17.0" />
+                  <Font size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="IntermediateDifficulty" layoutX="320.0" layoutY="216.0" mnemonicParsing="false" onAction="#changeScreenonStartGameIntermediate" prefHeight="193.0" prefWidth="206.0" stylesheets="@../../../test/src/application/application.css">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="AdvancedDifficulty" layoutX="586.0" layoutY="216.0" mnemonicParsing="false" onAction="#changeScreenonStartGameAdvanced" prefHeight="193.0" prefWidth="206.0" stylesheets="@application.css">
+               <font>
+                  <Font size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text layoutX="595.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are an explosive ordnances expert and want a higher challenge.  But tread carefully, a minefield that large can defeat even the steadiest competitors." wrappingWidth="188.0">
+               <font>
+                  <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="557.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Info about Advanced difficulty">
+            <Text layoutX="58.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to experience this classic gem but don't want to get blown up too early?Then this is the perfect mode to dip your toes into." wrappingWidth="188.0">
                <font>
-                  <Font size="17.0" />
+                  <Font size="14.0" />
                </font>
             </Text>
+            <TextField fx:id="username" layoutX="235.0" layoutY="72.0" prefHeight="46.0" prefWidth="372.0" />
+            <Label layoutX="229.0" layoutY="37.0" text="Please enter your username then select difficulty" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
