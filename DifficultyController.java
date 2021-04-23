@@ -1,11 +1,9 @@
 package application;
 
-import java.io.IOException;
+import java.io.IOException; 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -80,21 +78,19 @@ public class DifficultyController {
 	// takes user to game screen
 	@FXML 
 	public void changeScreenonStart(ActionEvent event) throws IOException {
-		FXMLLoader viewStart = new FXMLLoader(getClass().getResource("Start.fxml"));
-		Parent root = (Parent) viewStart.load();
-		root.setId("Start");
-	
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
+		GameController game = new GameController();
+		game.setWidth();
+		game.setHeight();
+		Scene sceneGame = new Scene(game.createDynamicGrid());
+		game.passScene(sceneGame);
+		sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		
-		stage.setScene(scene);
+		stage.setScene(sceneGame);
 		stage.setTitle("Minesweeper: Start Game");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
 		stage.show();
 	}
-	
+
 	// takes user to home screen
 	@FXML 
 	public void changeScreenonBack(ActionEvent event) throws IOException {

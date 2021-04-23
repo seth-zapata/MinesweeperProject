@@ -19,7 +19,7 @@ public class Main extends Application {
 			MainController control = new MainController();
 			control = load.getController();
 			// Fill in controller methods to be called
-			// These methods will be to globalize data (such as final score and time of game)
+			// These methods may be used to globalize data (such as final score and time of game)
 
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
