@@ -19,7 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import model.MPApp;
-
+ 
 public class GameController {
 	
 	// TODO: Get buttons to display on the same screen as the game
