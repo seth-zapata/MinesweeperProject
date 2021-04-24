@@ -6,15 +6,30 @@
 	-fx-background-image:url("homeBackgroundDifficulty.jpg");
 	-fx-background-size: 100% 100%;
 }
+
 #BeginnerDifficulty{
 	-fx-background-image:url("beginnerDifficulty.jpg");
 	-fx-background-size: 100% 100%;
 }
+#BeginnerDifficulty:hover{
+	-fx-background-image:url("beginnerDifficultyMouseOver.jpg");	
+	-fx-background-size: 100% 100%;
+}
+
 #IntermediateDifficulty{
 	-fx-background-image:url("intermediateDifficulty.jpg");
 	-fx-background-size: 100% 100%;
 }
+#IntermediateDifficulty:hover{
+	-fx-background-image:url("intermediateDifficultyMouseOver.jpg");
+	-fx-background-size: 100% 100%;
+}
+
 #AdvancedDifficulty{
 	-fx-background-image:url("advancedDifficulty.jpg");
+	-fx-background-size: 100% 100%;
+}
+#AdvancedDifficulty:hover{
+	-fx-background-image:url("advancedDifficultyMouseOver.jpg");
 	-fx-background-size: 100% 100%;
 }
