@@ -1,0 +1,53 @@
+#Home {
+	-fx-background-image:url("homeBackground.jpg");
+	-fx-background-size: 100% 100%;
+}
+#Difficulty{
+	-fx-background-image:url("homeBackgroundDifficulty.jpg");
+	-fx-background-size: 100% 100%;
+}
+
+#BeginnerDifficulty{
+	-fx-background-image:url("beginnerDifficulty.jpg");
+	-fx-background-size: 100% 100%;
+}
+#BeginnerDifficulty:hover{
+	-fx-background-image:url("beginnerDifficultyMouseOver.jpg");	
+	-fx-background-size: 100% 100%;
+}
+
+#IntermediateDifficulty{
+	-fx-background-image:url("intermediateDifficulty.jpg");
+	-fx-background-size: 100% 100%;
+}
+#IntermediateDifficulty:hover{
+	-fx-background-image:url("intermediateDifficultyMouseOver.jpg");
+	-fx-background-size: 100% 100%;
+}
+
+#AdvancedDifficulty{
+	-fx-background-image:url("advancedDifficulty.jpg");
+	-fx-background-size: 100% 100%;
+}
+#AdvancedDifficulty:hover{
+	-fx-background-image:url("advancedDifficultyMouseOver.jpg");
+	-fx-background-size: 100% 100%;
+}
+
+#HighScores{
+	-fx-background-image:url("homeBackground.jpg");
+	-fx-background-size:100% 100%;
+}
+
+#HighScoreText{
+	-fx-control-inner-background:#000000; 
+	-fx-highlight-fill: #00ff00; 
+	-fx-highlight-text-fill: #000000; 
+	-fx-text-fill: #0000ff;
+}
+
+#HSPane{
+	-fx-background-color: #000000;
+}
+
+
