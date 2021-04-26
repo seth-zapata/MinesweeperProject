@@ -3,7 +3,7 @@
 	-fx-background-size: 100% 100%;
 }
 #Difficulty{
-	-fx-background-image:url("homeBackgroundDifficulty.jpg");
+	-fx-background-image:url("homeBackgroundDifficulty2.jpg");
 	-fx-background-size: 100% 100%;
 }
 
@@ -12,7 +12,7 @@
 	-fx-background-size: 100% 100%;
 }
 #BeginnerDifficulty:hover{
-	-fx-background-image:url("beginnerDifficultyMouseOver.jpg");	
+	-fx-background-image:url("beginnerDifficultyMouseOver1.jpg");	
 	-fx-background-size: 100% 100%;
 }
 
@@ -21,7 +21,7 @@
 	-fx-background-size: 100% 100%;
 }
 #IntermediateDifficulty:hover{
-	-fx-background-image:url("intermediateDifficultyMouseOver.jpg");
+	-fx-background-image:url("intermediateDifficultyMouseOver1.jpg");
 	-fx-background-size: 100% 100%;
 }
 
@@ -30,7 +30,7 @@
 	-fx-background-size: 100% 100%;
 }
 #AdvancedDifficulty:hover{
-	-fx-background-image:url("advancedDifficultyMouseOver.jpg");
+	-fx-background-image:url("advancedDifficultyMouseOver1.jpg");
 	-fx-background-size: 100% 100%;
 }
 
@@ -48,6 +48,36 @@
 
 #HSPane{
 	-fx-background-color: #000000;
+}
+
+.button {
+	-fx-font-weight: bold;
+	-fx-background-color: #d50000 ;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: white;
+	
+}
+.button:hover{
+	-fx-font-weight: bold;
+	-fx-background-color:white;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: #d50000 ;
+	-fx-border-color: #d50000 ;
+	-fx-border-radius: 20;
+	-fx-border-width: 3;
+}
+.button:pressed{
+	-fx-font-weight: bold;
+	-fx-background-color:white;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: #d50000 ;
+	-fx-border-color: #d50000 ;
+	-fx-border-radius: 20;
+	-fx-border-width: 3;
+	-fx-rotate: 10;
 }
 
 
