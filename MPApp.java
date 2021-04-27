@@ -12,8 +12,40 @@ import javafx.scene.control.Alert.AlertType;
 
 public class MPApp {
 	
+	
+	// holds the amount of seconds that have passed
+	static int secondsPassed = 0;
+	
 	// holds difficulty selected by user
 	static String passedDifficultyValue;
+	
+		// new instance of timer
+	static Timer timer = new Timer();
+	
+	// this is the task that the timer will execute
+	static TimerTask task = new TimerTask() {
+		@Override
+		public void run() {
+			secondsPassed++;
+		}
+	};
+	
+	// starts the timer
+	public static void startTimer() {
+		// starts the timer after 1 second and then increments by 1 second (units are in milliseconds)
+		timer.scheduleAtFixedRate(task, 1000, 1000);
+	}
+	
+	// stops the timer
+	public static void stopTimer() {
+		timer.cancel();
+		timer.purge();
+	}
+	
+	// used to retrieve total time
+	public static int getTimerTime() {
+		return secondsPassed;
+	}
 	
 	// sets what difficulty the user selected
 	public static void setPassedValue(String passedDifficultyValueTemp) {
