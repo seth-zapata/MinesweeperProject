@@ -24,17 +24,17 @@
                   </ImageView>
                   <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="84.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Pictures/untitledfolder/temp.jpg" />
+                        <Image url="@temp.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="448.0" layoutY="779.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Pictures/untitledfolder/temp.jpg" />
+                        <Image url="@temp.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="81.0" layoutY="1140.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Pictures/untitledfolder/temp.jpg" />
+                        <Image url="@temp.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="textB" alignment="CENTER" layoutX="84.0" layoutY="134.0" prefHeight="164.0" prefWidth="308.0" text="Start the game by clicking on a random tile." textAlignment="CENTER" wrapText="true" />
@@ -44,7 +44,7 @@
                   <Label fx:id="textG" layoutX="397.0" layoutY="1238.0" prefHeight="116.0" prefWidth="293.0" text="If you click on a mine the game ends." textAlignment="CENTER" wrapText="true" />
                   <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="447.0" layoutY="1506.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Pictures/untitledfolder/temp.jpg" />
+                        <Image url="@temp.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="textB" layoutX="98.0" layoutY="1587.0" prefHeight="146.0" prefWidth="310.0" text="Win the game by clicking all the safe tiles." textAlignment="CENTER" wrapText="true" />
