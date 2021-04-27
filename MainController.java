@@ -28,6 +28,8 @@ public class MainController {
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		
+		stage.centerOnScreen();
+		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Difficulty Settings");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
@@ -44,6 +46,8 @@ public class MainController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Rules");
@@ -62,6 +66,8 @@ public class MainController {
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		
+		stage.centerOnScreen();
+		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: High Scores");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
@@ -78,6 +84,8 @@ public class MainController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Home");

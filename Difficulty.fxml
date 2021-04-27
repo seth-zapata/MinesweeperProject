@@ -25,7 +25,7 @@
                   <Font size="19.0" />
                </font>
             </Button>
-            <Text layoutX="329.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You know your way around a mindfieldand and can keep a calm, cool, and collected mindset when under pressure." wrappingWidth="188.0">
+            <Text layoutX="329.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You know your way around a mindfield and can keep a calm, cool, collected mindset when under pressure." wrappingWidth="188.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -54,23 +54,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text layoutX="595.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are an explosive ordnances expert and want a higher challenge.  But tread carefully, a minefield that large can defeat even the steadiest competitors." wrappingWidth="188.0">
+            <Text layoutX="595.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are an explosive ordnances expert and want a higher challenge. But tread carefully! A minefield this large can defeat even the steadfast of competitors..." wrappingWidth="188.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="58.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to experience this classic gem but don't want to get blown up too early?Then this is the perfect mode to dip your toes into." wrappingWidth="188.0">
+            <Text layoutX="58.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to experience this classic gem, but don't want to get blown up too early? Then this is the perfect mode to dip your toes into." wrappingWidth="188.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="username" layoutX="235.0" layoutY="69.0" prefHeight="46.0" prefWidth="372.0" />
+            <TextField fx:id="username" layoutX="235.0" layoutY="89.0" prefHeight="35.0" prefWidth="375.0" />
             <Text fill="WHITE" layoutX="78.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beginner">
                <font>
                   <Font name="Courier New Bold" size="31.0" />
                </font>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="205.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter username then difficulty" textAlignment="CENTER">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="206.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter username, then select difficulty below" textAlignment="CENTER" wrappingWidth="433.88671875">
                <font>
                   <Font name="Courier New Bold" size="24.0" />
                </font>

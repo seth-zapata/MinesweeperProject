@@ -1,27 +1,33 @@
 package application;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.MPApp;
  
 public class GameController {
 	
+	public Scene sceneCurrGame;
 	// TODO: Get buttons to display on the same screen as the game
 	// This may have to be done without Scenebuilder, but that's not for certain
 	
@@ -93,41 +99,18 @@ public class GameController {
 	
 	private final int square_size = 40, width = setWidth(), height = setHeight(), numSquarebyLength = width/square_size, numSquarebyHeight = height/square_size;
 	public Pane root;
-	public Scene sceneCurrGame;
 	public Text scoreTally;
-	public int totalSquares = 0, score = 0, totalMines = 0, totalEmptySquares = 0, numericalSquares = 0, flagCounter = 0, tempScore = 0;
+	public int totalSquares = 0, score = 0, totalMines = 0, totalEmptySquares = 0, numericalSquares = 0, flagCounter = 0, tempScore = 0, gameInstance = 0;
 	
-	int secondsElapsed = 0;
-	
-	// Timer components instantiated here
-	
-	public void resetGameTimer() {
-		Timer gameResetTimer = new Timer();
-		gameResetTimer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				System.out.println("resetGameTimer method called");
-				sceneCurrGame.setRoot(createDynamicGrid());
-			}
-		}, 10000);
-	}
-	
-	Timer timer = new Timer();
-	TimerTask task = new TimerTask() {
-		
-		public void run() { // Runs the timer task
-			secondsElapsed++;
-			System.out.println("Time elapsed: " + secondsElapsed + " seconds"); // Counts how long game has lasted
-				
-		}
-	};
+	int secondsElapsed = 0, timerStart = -1;
 	
 	public Square[][] gameGrid = new Square[numSquarebyLength][numSquarebyHeight]; // Grid where square data is stored
 	
 	// Creates a grid based on the passed width/height parameters from MPApp and populates the grid with square data
 	public Parent createDynamicGrid() { 
+		totalMines = 0;
 		root = new Pane();
-		root.setPrefSize(width, height + 200);
+		root.setPrefSize(width, height);
 		
 		for (int y = 0; y < numSquarebyHeight; y++) {
 			for (int x = 0; x < numSquarebyLength; x++) {
@@ -158,16 +141,9 @@ public class GameController {
 				numericalSquares++;
 				}
 			} flagCounter = totalMines;
-		}
-		
-		// TODO: Add score text box to pane
-		
-		/*
-		scoreTally = new Text("Score: ");
-		scoreTally.setTextAlignment(TextAlignment.CENTER);
-		scoreTally.setFont(Font.font(18));
-		root.getChildren().add(scoreTally);
-		StackPane.setAlignment(scoreTally, Pos.BOTTOM_LEFT); */
+			displayFlags();
+		}//System.out.println("TRUE flagcounter is " + flagCounter);
+	
 		return root;
 	}
 	
@@ -216,7 +192,7 @@ public class GameController {
 		public int square_yCoord;
 		public boolean isMine, isRevealed = false;
 		
-		public int option = 0, timerStart = -1; // Option for multiple right clicks on a square, and validating the timer to start on a revealed square click
+		public int option = 0; // Option for multiple right clicks on a square
 		
 		public Rectangle square_perimeter = new Rectangle(square_size - 2, square_size - 2); // 
 		public Text square_value = new Text(); // Text holds the number of adjacent mines, or an empty string
@@ -248,6 +224,12 @@ public class GameController {
 			square_perimeter.setOnMouseClicked(e -> {
 				if (e.getButton() == MouseButton.PRIMARY) { // On a left-click, go to reveal() to reveal the square
 					try {
+						timerStart+=1;
+						//System.out.println("timerStart is " + timerStart);
+						if (timerStart == 0) {
+							// Open dialog box to display timer
+							MPApp.startTimer();
+						}
 						reveal();
 					} catch (IOException e1) { // Handles IO Exception from when the score is added to a file in reveal(), when game finishes
 						e1.printStackTrace();
@@ -262,7 +244,8 @@ public class GameController {
 							Image img = new Image("application/unsureOfMine.png"); // Mine image
 							square_perimeter.setFill(new ImagePattern(img));
 							flagCounter--; // Player uses one attempt at marking a possible mine square
-							System.out.println("Flag counter: " + flagCounter);
+							displayFlags();
+							//System.out.println("Flag counter: " + flagCounter);
 						}
 						if (this.option % 3 == 2) { // Second right-click will mark the square as a question mark (unsure)
 							Image img = new Image("application/questionmark.png"); // Question mark image
@@ -270,7 +253,8 @@ public class GameController {
 						}
 						if (this.option % 3 == 0) { // Third right-click will just black out the square as it originally was
 							flagCounter++; // Player gains back the attempt at flagging the square for a mine
-							System.out.println("Flag counter: " + flagCounter);
+							displayFlags();
+							//System.out.println("Flag counter: " + flagCounter);
 							square_perimeter.setFill(Color.BLACK); // Covers the square again
 						}
 					}
@@ -280,12 +264,6 @@ public class GameController {
 		public void reveal() throws IOException, InterruptedException {
 			if(isRevealed) {
 				return; // Square is already visible
-			}
-			
-			timerStart++;
-			
-			if (timerStart == 0) { 
-				//start(); Starts the timer when the first click is made (excluding empty squares)
 			}
 			
 			if (isMine) {
@@ -300,21 +278,22 @@ public class GameController {
 						sqr.square_perimeter.setOnMouseClicked(null); // Disables mouse clicks on squares since game is over
 					}
 				}
-				//end(); This will end the timer when a mine square is clicked. FIXME: Errors with multiple timer tasks
-				System.out.println("Game Over: You lost :(");
-				System.out.println("Final Score: " + score);
-				MPApp.setScore(score); // Sets the score so High Scores Screen can grab it
-				MPApp.addScore(score); // Adds the score to a text file 
+
+				//System.out.println("Game Over: You lost :(");
+				//System.out.println("Final Score: " + score); 
 				
+				MPApp.updateScore(score);
 				score = 0;
 				totalMines = 0;
 				numericalSquares = 0;
 				totalSquares = 0;
 				flagCounter = 0;
+				timerStart = -1;
+				gameInstance+=1;
 				
-				//System.out.println("10 seconds until game restarts");
-				//resetGameTimer();
-				sceneCurrGame.setRoot(createDynamicGrid());
+				lostFace();
+				MPApp.stopTimerGame();
+				MPApp.addTime();
 				return;
 			} else { // Case where game recursively searches for empty squares; we don't want to update score
 				if (square_value.getText().isEmpty()) {
@@ -327,8 +306,8 @@ public class GameController {
 					isRevealed = true;
 					square_value.setVisible(true);
 					square_perimeter.setFill(null);
-					System.out.println("Score updated by 1");
-					score++;
+					//System.out.println("Score updated by 1");
+					score+=1;
 				}
 			}
 			if (score == numericalSquares) { // If the score is equal to all possible numberically filled squares, all mines are found, and game is over
@@ -345,20 +324,21 @@ public class GameController {
 					}
 				}
 				
-				System.out.println("You Win!");
-				System.out.println("Final Score " + score);
-				MPApp.setScore(score); // Sets the score so High Scores Screen can grab it
-				MPApp.addScore(score); // Adds the score to a text file 
-				
+				//System.out.println("You Win!");
+				//System.out.println("Final Score " + score);
+
+				MPApp.updateScore(score);
 				score = 0;
 				totalMines = 0;
 				numericalSquares = 0;
 				totalSquares = 0;
 				flagCounter = 0;
+				gameInstance+=1;
 				
-				//System.out.println("10 seconds until game restarts");
-				//resetGameTimer(); // Wait for 10 seconds before restarting game
-				//sceneCurrGame.setRoot(createDynamicGrid());
+				coolFace();
+				MPApp.stopTimerGame();
+				MPApp.addTime();
+				
 				return;
 			}
 			
@@ -366,7 +346,7 @@ public class GameController {
 			if(square_value.getText().isEmpty()) { 
 				getAdjacentSquares(this).forEach(arg0 -> { // forEach() goes through list of adjacent squares
 					try {
-						arg0.reveal(); // Will reveal adjacent squares OF adjacent squares (recursive reveal)
+						arg0.reveal(); // Will reveal adjacent squares of adjacent squares (recursive reveal)
 					} catch (IOException e) { // Handles the IOException from possibly writing the score to a file
 						e.printStackTrace();
 					} catch (InterruptedException e) { // Handles error from TimeUnit utility
@@ -379,6 +359,149 @@ public class GameController {
 
 	public void passScene(Scene sceneGame) {
 		sceneCurrGame = sceneGame; // Pass the scene from the Start Controller so we can reset the game screen using sceneCurrGame.setRoot(createDynamicGrid())
+	}
+	
+	// holds the amount of seconds that have passed
+		int secondsPassed = 0;
 		
+		Text time = new Text();
+		
+		Text flagsText = new Text();
+		
+		VBox box = new VBox();
+		
+		Stage smallStage = new Stage();
+		Scene smallScene;
+	
+	public void setTimerPopup() throws FileNotFoundException {
+		time.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
+		flagsText.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
+		
+		Image image = new Image("application/happy.jpg");
+		ImageView imageView = new ImageView(image);
+		
+		imageView.setFitHeight(100);
+		imageView.setFitWidth(100);
+		imageView.setPreserveRatio(true);
+		
+		reset = new Button();
+		reset.setMinSize(100, 100);
+		reset.setMaxSize(100, 100);
+		
+		reset.setTranslateX(220);
+		reset.setTranslateY(-102);
+		reset.setGraphic(imageView);
+		
+		EventHandler <ActionEvent> home = new EventHandler <ActionEvent>() {
+			@FXML
+			public void handle(ActionEvent e) {
+				MainController homeScreen = new MainController();
+				Stage stage = (Stage) back.getScene().getWindow();
+				try {
+					stage.close();
+					MPApp.closeScene();
+					MPApp.stopTimerGame();
+					homeScreen.changeScreenonBack(e);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		};
+		
+		EventHandler <ActionEvent> rules = new EventHandler <ActionEvent>() {
+			@FXML
+			public void handle(ActionEvent e) {
+				MainController rulesScreen = new MainController();
+				Stage stage = (Stage) help.getScene().getWindow();
+				try {
+					stage.close();
+					MPApp.closeScene();
+					MPApp.stopTimerGame();
+					rulesScreen.changeScreenonRules(e);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		};
+		
+		back = new Button("HOME");
+		back.setMinSize(70, 50);
+		back.setMaxSize(70, 50);
+		
+		back.setTranslateX(20);
+		back.setTranslateY(-82);
+
+		help = new Button("HELP");
+		help.setMinSize(70, 50);
+		help.setMaxSize(70, 50);
+		help.setTranslateX(220);
+		help.setTranslateY(-132);
+		
+		EventHandler <ActionEvent> event = new EventHandler <ActionEvent>() {
+			public void handle(ActionEvent e) {
+				score = MPApp.getScore();
+				score+=1; // Case where player didn't get a single square revealed (first mine is a bomb);
+				//System.out.println("RESET");
+				//System.out.println("gameInstance is " + gameInstance);
+				//System.out.println("score is " + score);
+				try {
+					if (gameInstance > 0) {
+						flagCounter = 0;
+						score = 0;
+						MPApp.stopTimerGame();
+						reset.setGraphic(imageView);
+						time.setText("Time: 0");
+						sceneCurrGame.setRoot(createDynamicGrid());
+					}
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		};
+		
+		reset.setOnAction(event);
+		back.setOnAction(home);
+		help.setOnAction(rules);
+
+		time.setText("Time: " + secondsPassed);
+		flagsText.setText("Flags: " + flagCounter);
+		box.getChildren().addAll(time, flagsText, imageView, reset, back, help);
+		
+		smallScene = new Scene(box, 350, 200);
+		
+		smallStage.setScene(smallScene);
+		smallStage.setTitle("Minesweeper: Timer and Flags");
+		smallStage.getIcons().add(new Image("application/minesweeperIcon.jpg"));
+		
+		smallStage.setX(1200);
+		smallStage.setY(200);
+		MPApp.getTime(time);
+		smallStage.show();
+		
+	}
+	
+	public void displayFlags() {
+		flagsText.setText("Flags: " + flagCounter);
+	}
+	
+	public void lostFace() {
+		Image image = new Image("application/lost.png");
+		ImageView imageView = new ImageView(image);
+		
+		imageView.setFitHeight(100);
+		imageView.setFitWidth(120);
+		imageView.setPreserveRatio(true);
+		reset.setGraphic(imageView);
+	}
+	
+	public void coolFace() {
+		Image image = new Image("application/cool.png");
+		ImageView imageView = new ImageView(image);
+		
+		imageView.setFitHeight(100);
+		imageView.setFitWidth(120);
+		imageView.setPreserveRatio(true);
+		reset.setGraphic(imageView);
 	}
 }
