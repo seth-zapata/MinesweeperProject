@@ -6,6 +6,10 @@
 	-fx-background-image:url("homeBackgroundDifficulty2.jpg");
 	-fx-background-size: 100% 100%;
 }
+#Rules{
+	-fx-background-image:url("bg2.jpg");
+	-fx-background-size: 100% 100%;
+}
 
 #BeginnerDifficulty{
 	-fx-background-image:url("beginnerDifficulty.jpg");
@@ -79,5 +83,37 @@
 	-fx-border-width: 3;
 	-fx-rotate: 10;
 }
+
+@font-face {
+    src: url('joystix_monospace.tiff');
+    src: url('ka1.tiff');
+}
+#rulesPane{
+	-fx-background-color:black;
+}
+#how_to_play{
+	-fx-font-family: 'Karmatic Arcade';
+	-fx-text-fill: #1f1f1f;
+	-fx-font-size: 60px; 
+	-fx-alignment:center;
+
+}
+#textB{
+	-fx-font-family: "Joystix";
+	-fx-font-size:24px;
+	-fx-text-fill: #0000ff;
+}
+#textG{
+	-fx-font-family: "Joystix";
+	-fx-font-size:24px;
+	-fx-text-fill: #00ff00;
+}
+
+#rulesBackBtn{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 15px;
+	-fx-alignment:center;
+}
+
 
 
