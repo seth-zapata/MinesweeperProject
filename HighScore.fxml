@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.effect.*?>
@@ -9,27 +10,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HighScoreController">
+<AnchorPane prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HighScoreController">
    <children>
-      <Pane fx:id="HighScores" layoutX="5.0" layoutY="7.0" prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css">
+      <Pane fx:id="HighScores" layoutX="-7.0" layoutY="-7.0" prefHeight="759.0" prefWidth="929.0" stylesheets="@application.css">
          <children>
-            <Pane fx:id="HSPane" layoutX="40.0" layoutY="75.0" prefHeight="603.0" prefWidth="843.0">
-               <children>
-                  <Text fx:id="HSLabel" fill="RED" fontSmoothingType="LCD" layoutX="196.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Scores" textAlignment="CENTER">
-                     <font>
-                        <Font name="Courier New Bold" size="72.0" />
-                     </font>
-                     <effect>
-                        <Glow level="1.0" />
-                     </effect>
-                  </Text>
-               </children></Pane>
-            <Button fx:id="back" layoutX="399.0" layoutY="608.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="40.0" prefWidth="87.0" text="Back">
+            <Button fx:id="back" layoutX="412.0" layoutY="703.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="40.0" prefWidth="87.0" text="Back">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Text fill="GREEN" layoutX="193.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+            <Pane fx:id="HSPane" layoutX="62.0" layoutY="153.0" prefHeight="545.0" prefWidth="804.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="527.0" layoutX="70.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="788.0" />
+            <Text fx:id="playerTimeScore" fill="GREEN" layoutX="191.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
                <font>
                   <Font name="Courier New Bold" size="29.0" />
                </font>
@@ -37,7 +29,7 @@
                   <Glow level="1.0" />
                </effect>
             </Text>
-            <Text fill="GREEN" layoutX="411.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+            <Text fx:id="playerTimeScore" fill="GREEN" layoutX="414.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
                <font>
                   <Font name="Courier New Bold" size="29.0" />
                </font>
@@ -45,7 +37,7 @@
                   <Glow level="1.0" />
                </effect>
             </Text>
-            <Text fill="GREEN" layoutX="620.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+            <Text fx:id="playerTimeScore" fill="GREEN" layoutX="628.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
                <font>
                   <Font name="Courier New Bold" size="29.0" />
                </font>
@@ -53,13 +45,21 @@
                   <Glow level="1.0" />
                </effect>
             </Text>
-            <TextArea fx:id="HighScoreText" layoutX="130.0" layoutY="212.0" prefHeight="386.0" prefWidth="662.0" stylesheets="@application.css">
+            <TextArea fx:id="HighScoreText" layoutX="135.0" layoutY="232.0" prefHeight="386.0" prefWidth="662.0" stylesheets="@application.css">
                <font>
                   <Font name="Courier New Bold" size="36.0" />
                </font>
                <effect>
                   <Glow />
                </effect></TextArea>
+            <Text fx:id="HSLabel" fill="#1f1f1f" fontSmoothingType="LCD" layoutX="252.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Scores" textAlignment="CENTER">
+               <font>
+                  <Font name="Courier New Bold" size="72.0" />
+               </font>
+               <effect>
+                  <Glow level="0.0" />
+               </effect>
+            </Text>
          </children>
       </Pane>
    </children>
