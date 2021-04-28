@@ -1,24 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Pane layoutX="193.0" layoutY="3.0" prefHeight="742.0" prefWidth="536.0">
-         <children>
-            <Text layoutX="145.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minesweeper">
-               <font>
-                  <Font size="42.0" />
-               </font>
-            </Text>
-            <Button fx:id="start" layoutX="216.0" layoutY="282.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="42.0" prefWidth="96.0" text="Start" />
-            <Button fx:id="rules" layoutX="216.0" layoutY="356.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="42.0" prefWidth="96.0" text="Rules" />
-            <Button fx:id="highscore" layoutX="216.0" layoutY="429.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="42.0" prefWidth="96.0" text="High Score" />
-         </children>
-      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="10.0" height="527.0" layoutX="63.0" layoutY="144.0" stroke="TRANSPARENT" strokeType="INSIDE" width="793.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="71.0" layoutY="153.0" prefHeight="510.0" prefWidth="774.0" vbarPolicy="ALWAYS">
+         <content>
+            <Pane fx:id="rulesPane" prefHeight="1884.0" prefWidth="772.0">
+               <children>
+                  <ImageView fx:id="startGif" fitHeight="255.0" fitWidth="319.0" layoutX="402.0" layoutY="75.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@start.gif" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="84.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@temp.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="448.0" layoutY="779.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@temp.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="81.0" layoutY="1140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@temp.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="textB" alignment="CENTER" layoutX="84.0" layoutY="134.0" prefHeight="164.0" prefWidth="308.0" text="Start the game by clicking on a random tile." textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="textG" alignment="CENTER" layoutX="339.0" layoutY="414.0" prefHeight="310.0" prefWidth="394.0" text="As you click on tiles some may display a number. That number indicates the amount of mines adjacent to that tile." textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="textB" layoutX="63.0" layoutY="759.0" prefHeight="181.0" prefWidth="360.0" text="Place flags by right clicking on a tile you have confirmed has a mine." textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="textB" layoutX="63.0" layoutY="913.0" prefHeight="189.0" prefWidth="325.0" text="Right Click again to place a question mark on a tile you think may have a mine." textAlignment="CENTER" wrapText="true" />
+                  <Label fx:id="textG" layoutX="397.0" layoutY="1238.0" prefHeight="116.0" prefWidth="293.0" text="If you click on a mine the game ends." textAlignment="CENTER" wrapText="true" />
+                  <ImageView fitHeight="305.0" fitWidth="231.0" layoutX="447.0" layoutY="1506.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@temp.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="textB" layoutX="98.0" layoutY="1587.0" prefHeight="146.0" prefWidth="310.0" text="Win the game by clicking all the safe tiles." textAlignment="CENTER" wrapText="true" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="256.0" layoutX="400.0" layoutY="74.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="322.0" />
+               </children></Pane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="rulesBackBtn" alignment="CENTER" layoutX="407.0" layoutY="681.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="0.0" prefWidth="93.0" text="Back">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Button>
+      <Label fx:id="how_to_play" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="11.0" stylesheets="@application.css" text="HOW TO PLAY" />
    </children>
 </AnchorPane>
