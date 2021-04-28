@@ -1,7 +1,5 @@
 # MinesweeperProject
 Minesweeper game implementation through JavaFX Project
-All files (except MPApp.java) will go in the application package in Eclipse
-    - MPApp.java will go in the model package
 
 Name of your team: Minesweepers 
 
@@ -14,3 +12,5 @@ Known bugs:
 Log in info: Once the start button is clicked the user will be taken to the difficulties scene and will be required to enter a username. If the user wins the game the username will be shown in the highscores scene.
 
 Versions or other requirements: The app was built using Java 8 and Scene Builder 2.0
+All files (except MPApp.java) will go in the application package in Eclipse
+    - MPApp.java will go in the model package
