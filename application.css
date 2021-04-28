@@ -1,9 +1,9 @@
 #Home {
-	-fx-background-image:url("homeBackground.jpg");
+	-fx-background-image:url("bg2.jpg");
 	-fx-background-size: 100% 100%;
 }
 #Difficulty{
-	-fx-background-image:url("homeBackgroundDifficulty2.jpg");
+	-fx-background-image:url("bg2.jpg");
 	-fx-background-size: 100% 100%;
 }
 #Rules{
@@ -39,29 +39,41 @@
 }
 
 #HighScores{
-	-fx-background-image:url("homeBackground.jpg");
+	-fx-background-image:url("bg2.jpg");
 	-fx-background-size:100% 100%;
 }
 
 #HighScoreText{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 30px;
 	-fx-control-inner-background:#000000; 
 	-fx-highlight-fill: #00ff00; 
 	-fx-highlight-text-fill: #000000; 
 	-fx-text-fill: #0000ff;
+	
+}
+#HighScoreText *.text {
+    -fx-text-alignment: center;
 }
 
+#playerTimeScore{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 30px;
+}
 #HSPane{
 	-fx-background-color: #000000;
 }
 
 .button {
+	-fx-font-family: "Joystix";
+	-fx-font-size: 15px;
 	-fx-font-weight: bold;
 	-fx-background-color: #d50000 ;
 	-fx-background-radius: 22;
 	-fx-font-size: 16;
 	-fx-text-fill: white;
-	
 }
+
 .button:hover{
 	-fx-font-weight: bold;
 	-fx-background-color:white;
@@ -72,6 +84,7 @@
 	-fx-border-radius: 20;
 	-fx-border-width: 3;
 }
+
 .button:pressed{
 	-fx-font-weight: bold;
 	-fx-background-color:white;
@@ -91,29 +104,39 @@
 #rulesPane{
 	-fx-background-color:black;
 }
-#how_to_play{
-	-fx-font-family: 'Karmatic Arcade';
-	-fx-text-fill: #1f1f1f;
-	-fx-font-size: 60px; 
-	-fx-alignment:center;
 
-}
 #textB{
 	-fx-font-family: "Joystix";
 	-fx-font-size:24px;
 	-fx-text-fill: #0000ff;
 }
+
 #textG{
 	-fx-font-family: "Joystix";
 	-fx-font-size:24px;
 	-fx-text-fill: #00ff00;
 }
 
-#rulesBackBtn{
+#start, #rules, #highscore{
 	-fx-font-family: "Joystix";
-	-fx-font-size: 15px;
+	-fx-font-size: 32px;
+}
+
+#title, #diffTitle, #how_to_play, #HSLabel{
+	-fx-font-family: 'Karmatic Arcade';
+	-fx-text-fill: #1f1f1f;
+	-fx-font-size: 50px; 
 	-fx-alignment:center;
 }
 
+#diffText{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 10.5px;
+}
+
+#diffLabel, #enterUsername{
+	-fx-font-family: "Joystix";
+	-fx-font-size:23px;
+}
 
 
