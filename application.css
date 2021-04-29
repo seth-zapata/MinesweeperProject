@@ -44,16 +44,44 @@
 }
 
 #HighScoreText{
-	-fx-font-family: "Joystix";
-	-fx-font-size: 30px;
 	-fx-control-inner-background:#000000; 
 	-fx-highlight-fill: #00ff00; 
 	-fx-highlight-text-fill: #000000; 
 	-fx-text-fill: #0000ff;
 	
 }
-#HighScoreText *.text {
-    -fx-text-alignment: center;
+
+#HighScoreText .scroll-bar:vertical{
+	-fx-pref-width:25;
+	-fx-opacity:25;
+	
+}
+#HighScoreText .scroll-bar:horizontal {
+    -fx-pref-height: 0.1;
+    -fx-opacity: 0;
+}
+
+#HighScoreText .scroll-bar:vertical .increment-button ,
+#HighScoreText .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+	-fx-background-radius: 0em;
+	-fx-padding:0 0 0 0;
+
+}
+
+#HighScoreText .scroll-bar:vertical .track{
+	-fx-background-color: transparent;
+	-fx-border-color:derive(gray,80%);
+ 
+	-fx-background-radius: 2em;
+	-fx-border-radius:2em;
+}
+
+#HighScoreText .scroll-bar:vertical .thumb{
+	-fx-background-color:derive(black,90%);
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
 }
 
 #playerTimeScore{

@@ -32,7 +32,7 @@ public class HighScoreController {
 	@FXML
 	void itemPrint() throws FileNotFoundException, IOException { //method to load inventory text to textbox 
 		HashMap<String, String> hash=new HashMap<String,String>();
-		File file=new File("data.inventory");
+		File file=new File("userIDs.properties");
 		FileInputStream reader=new FileInputStream(file);
 		Properties properties=new Properties();
 		properties.load(reader);
@@ -40,6 +40,7 @@ public class HighScoreController {
 		for(Object key: properties.stringPropertyNames()) {
 			hash.put(key.toString(), properties.get(key).toString());
 		}
+		int[] ordinal = { 1 };
 		Iterator<HashMap.Entry<String, String>> itr = hash.entrySet().iterator();
 		delay.getKeyFrames().setAll(new KeyFrame(Duration.seconds(0.5)));
 		delay.setOnFinished(e -> {    
@@ -47,13 +48,14 @@ public class HighScoreController {
 		    HashMap.Entry<String, String> entry = itr.next();
 		    delay.getKeyFrames().setAll(new KeyFrame(Duration.seconds(0.4)));
 		    delay.playFromStart();
-		    HighScoreText.appendText(entry.getKey() + " " + entry.getValue() + "\n"); 
+		    String complete = String.format("%-3d %-6s %s\n", ordinal[0]++, entry.getKey(), entry.getValue());
+		    HighScoreText.appendText(complete); 
+		   
 
 		}	
 		});
 		delay.playFromStart();
 		
-	
 	}
 	
 	@FXML

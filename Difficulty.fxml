@@ -61,7 +61,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="username" layoutX="237.0" layoutY="160.0" prefHeight="35.0" prefWidth="375.0" />
+            <TextField fx:id="username" layoutX="237.0" layoutY="160.0" prefHeight="35.0" prefWidth="375.0" promptText="AAA" />
             <Text fx:id="diffLabel" fill="WHITE" layoutX="80.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beginner">
                <font>
                   <Font name="Courier New Bold" size="31.0" />

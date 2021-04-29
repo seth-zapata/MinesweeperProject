@@ -33,10 +33,11 @@ public class DifficultyController {
 			// display "no username" alert message 
 		} else {
 			// add username to file
+			MPApp.setPassedValue("Beginner");
 			MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "beginner"
-			MPApp.setPassedValue("Beginner");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}
@@ -50,11 +51,12 @@ public class DifficultyController {
 			// display "no username" alert message
 		}
 		else {
+			MPApp.setPassedValue("Intermediate");
 			// add username to file
 			MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "intermediate"
-			MPApp.setPassedValue("Intermediate");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}
@@ -68,11 +70,12 @@ public class DifficultyController {
 			// display "no username" alert message
 		}
 		else {
+			MPApp.setPassedValue("Advanced");
 			// add username to file
 			MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "advanced"
-			MPApp.setPassedValue("Advanced");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}

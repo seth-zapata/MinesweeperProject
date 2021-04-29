@@ -442,20 +442,13 @@ public class GameController {
 			public void handle(ActionEvent e) {
 				score = MPApp.getScore();
 				score+=1; // Case where player didn't get a single square revealed (first mine is a bomb);
-				//System.out.println("RESET");
-				//System.out.println("gameInstance is " + gameInstance);
-				//System.out.println("score is " + score);
-				try {
-					if (gameInstance > 0) {
-						flagCounter = 0;
-						score = 0;
-						MPApp.stopTimerGame();
-						reset.setGraphic(imageView);
-						time.setText("Time: 0");
-						sceneCurrGame.setRoot(createDynamicGrid());
-					}
-				} catch (IOException e1) {
-					e1.printStackTrace();
+				if (gameInstance > 0) {
+					flagCounter = 0;
+					score = 0;
+					MPApp.stopTimerGame();
+					reset.setGraphic(imageView);
+					time.setText("Time: 0");
+					sceneCurrGame.setRoot(createDynamicGrid());
 				}
 			}
 		};
