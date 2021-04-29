@@ -40,17 +40,8 @@ public class HighScoreController {
 	
 	@FXML
 	void itemPrint() throws FileNotFoundException, IOException { //method to load inventory text to textbox 
-		/*HashMap<String, String> hash=new HashMap<String,String>();
-		File file=new File("userIDs.properties");
-		FileInputStream reader=new FileInputStream(file);
-		Properties properties=new Properties();
-		properties.load(reader);
-		reader.close();
-		for(Object key: properties.stringPropertyNames()) {
-			hash.put(key.toString(), properties.get(key).toString());
-		}
-		*/
-		BufferedReader reader = new BufferedReader(new FileReader("userInfo.txt"));
+
+	BufferedReader reader = new BufferedReader(new FileReader("userInfo.txt"));
         Map<String, String> map=new TreeMap<String, String>();
         String line="";
         while((line=reader.readLine())!=null){
@@ -74,21 +65,6 @@ public class HighScoreController {
 		delay.playFromStart();
 		
 		
-		/*Iterator<HashMap.Entry<String, String>> itr = hash.entrySet().iterator();
-		delay.getKeyFrames().setAll(new KeyFrame(Duration.seconds(0.5)));
-		delay.setOnFinished(e -> {    
-		    if(itr.hasNext()){
-		    HashMap.Entry<String, String> entry = itr.next();
-		    delay.getKeyFrames().setAll(new KeyFrame(Duration.seconds(0.4)));
-		    delay.playFromStart();
-		    String complete = String.format("%-3d %-6s %s\n", ordinal[0]++, entry.getKey(), entry.getValue());
-		    HighScoreText.appendText(complete); 
-		   
-
-		}	
-		});
-		delay.playFromStart();
-		*/
 	}
 	
 	@FXML
