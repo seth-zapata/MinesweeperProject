@@ -1,47 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MainController">
+<AnchorPane prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HighScoreController">
    <children>
-      <Pane layoutX="34.0" layoutY="42.0" prefHeight="669.0" prefWidth="884.0">
+      <Pane fx:id="HighScores" layoutX="-7.0" layoutY="-7.0" prefHeight="759.0" prefWidth="929.0" stylesheets="@application.css">
          <children>
-            <ListView layoutX="120.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
-            <ListView layoutX="342.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
-            <Text layoutX="361.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Scores">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </Text>
-            <Button fx:id="back" layoutX="399.0" layoutY="600.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="40.0" prefWidth="87.0" text="Back">
+            <Button fx:id="back" layoutX="412.0" layoutY="703.0" mnemonicParsing="false" onAction="#changeScreenonBack" prefHeight="40.0" prefWidth="87.0" text="Back">
                <font>
                   <Font size="19.0" />
                </font>
             </Button>
-            <Text layoutX="181.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+            <Pane fx:id="HSPane" layoutX="62.0" layoutY="153.0" prefHeight="545.0" prefWidth="804.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="527.0" layoutX="70.0" layoutY="161.0" stroke="WHITE" strokeType="INSIDE" width="788.0" />
+            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="189.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Courier New Bold" size="29.0" />
                </font>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
             </Text>
-            <Text layoutX="411.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="692.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Courier New Bold" size="29.0" />
                </font>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
             </Text>
-            <ListView layoutX="562.0" layoutY="347.0" prefHeight="200.0" prefWidth="200.0" />
-            <Text layoutX="626.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score">
+            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="353.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulty">
                <font>
-                  <Font size="29.0" />
+                  <Font name="Courier New Bold" size="29.0" />
                </font>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
             </Text>
-            <Text layoutX="270.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TODO: Update the listViews through MainController.java (?). Improve general aesthetic if possible." wrappingWidth="406.30810546875">
+            <TextArea fx:id="HighScoreText" layoutX="85.0" layoutY="227.0" prefHeight="395.0" prefWidth="760.0" stylesheets="@application.css">
                <font>
-                  <Font size="19.0" />
+                  <Font name="Courier New Bold" size="36.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect></TextArea>
+            <Text fx:id="HSLabel" fill="#1f1f1f" fontSmoothingType="LCD" layoutX="324.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="High Scores" textAlignment="CENTER">
+               <font>
+                  <Font name="Courier New Bold" size="72.0" />
+               </font>
+               <effect>
+                  <Glow level="0.0" />
+               </effect>
+            </Text>
+            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="93.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rank">
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+               <font>
+                  <Font name="Courier New Bold" size="29.0" />
                </font>
             </Text>
          </children>

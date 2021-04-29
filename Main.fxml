@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="752.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Pane layoutX="193.0" layoutY="3.0" prefHeight="742.0" prefWidth="536.0">
+      <Pane layoutX="193.0" layoutY="3.0" stylesheets="@application.css">
          <children>
-            <Text layoutX="145.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minesweeper">
+            <Button fx:id="highscore" layoutX="89.0" layoutY="537.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="124.0" prefWidth="340.0" text="High Scores" textAlignment="CENTER">
                <font>
-                  <Font size="42.0" />
+                  <Font size="48.0" />
+               </font></Button>
+            <Button fx:id="start" layoutX="87.0" layoutY="169.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="124.0" prefWidth="340.0" text="Start">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="rules" layoutX="88.0" layoutY="346.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="124.0" prefWidth="340.0" text="Rules">
+               <font>
+                  <Font size="36.0" />
                </font>
-            </Text>
-            <Button fx:id="difficulty" layoutX="216.0" layoutY="270.0" mnemonicParsing="false" onAction="#changeScreenonDifficulty" prefHeight="42.0" prefWidth="96.0" text="Difficulty" />
-            <Button fx:id="start" layoutX="216.0" layoutY="350.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="42.0" prefWidth="96.0" text="Start" />
-            <Button fx:id="rules" layoutX="216.0" layoutY="425.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="42.0" prefWidth="96.0" text="Rules" />
-            <Button fx:id="highscore" layoutX="216.0" layoutY="497.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="42.0" prefWidth="96.0" text="High Score" />
+            </Button>
+            <Label fx:id="title" alignment="CENTER" layoutX="25.0" layoutY="11.0" text="Minesweeper" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

@@ -15,11 +15,6 @@ public class Main extends Application {
 			FXMLLoader load = new FXMLLoader(getClass().getResource("Main.fxml"));
 			Parent root = (Parent) load.load();
 			root.setId("Home");
-			
-			MainController control = new MainController();
-			control = load.getController();
-			// Fill in controller methods to be called
-			// These methods will be to globalize data (such as final score and time of game)
 
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

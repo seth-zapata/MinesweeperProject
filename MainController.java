@@ -18,46 +18,24 @@ public class MainController {
 	private Button difficulty, start, rules, highscore, back;
 	
 	@FXML 
-	public void changeScreenonDifficulty(ActionEvent event) throws IOException {
+	public void changeScreenonStart(ActionEvent event) throws IOException {
 		FXMLLoader viewDifficulty = new FXMLLoader(getClass().getResource("Difficulty.fxml"));
 		Parent root = (Parent) viewDifficulty.load();
 		root.setId("Difficulty");
-		
-		// Controller for implementing difficulty ???
 	
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Difficulty Settings");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
 		stage.show();
 	}
-	
-	@FXML 
-	public void changeScreenonStart(ActionEvent event) throws IOException {
-		FXMLLoader viewStart = new FXMLLoader(getClass().getResource("Start.fxml"));
-		Parent root = (Parent) viewStart.load();
-		root.setId("Start");
-		
-		StartController control = new StartController();
-		control = viewStart.getController();
-		// Controller implements the game
-		
-	
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		
-		stage.setScene(scene);
-		stage.setTitle("Minesweeper: Start Game");
-		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
-		stage.show();
-	}
-	
+
 	@FXML 
 	public void changeScreenonRules(ActionEvent event) throws IOException {
 		FXMLLoader viewRules = new FXMLLoader(getClass().getResource("Rules.fxml"));
@@ -68,6 +46,8 @@ public class MainController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Rules");
@@ -80,12 +60,13 @@ public class MainController {
 		FXMLLoader viewHighScore = new FXMLLoader(getClass().getResource("HighScore.fxml"));
 		Parent root = (Parent) viewHighScore.load();
 		root.setId("HighScore");
-		// Controller for instantiating score across window ???
 	
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: High Scores");
@@ -103,6 +84,8 @@ public class MainController {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		
 		stage.setScene(scene);
 		stage.setTitle("Minesweeper: Home");

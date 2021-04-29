@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException; 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import javafx.stage.Stage;
 import model.MPApp;
 
 public class DifficultyController {
+	
+	EventHandler <ActionEvent> event;
 	
 	// button that turns user to home screen
 	@FXML private Button back;
@@ -30,10 +33,12 @@ public class DifficultyController {
 			// display "no username" alert message 
 		} else {
 			// add username to file
-			MPApp.addUserName(username.getText());
+			MPApp.setPassedValue("Beginner");
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "beginner"
-			MPApp.setPassedValue("Beginner");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}
@@ -47,11 +52,13 @@ public class DifficultyController {
 			// display "no username" alert message
 		}
 		else {
+			MPApp.setPassedValue("Intermediate");
 			// add username to file
-			MPApp.addUserName(username.getText());
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "intermediate"
-			MPApp.setPassedValue("Intermediate");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}
@@ -65,11 +72,13 @@ public class DifficultyController {
 			// display "no username" alert message
 		}
 		else {
+			MPApp.setPassedValue("Advanced");
 			// add username to file
-			MPApp.addUserName(username.getText());
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "advanced"
-			MPApp.setPassedValue("Advanced");
+			
 			// goto start game screen
 			changeScreenonStart(event);			
 		}
@@ -79,12 +88,17 @@ public class DifficultyController {
 	@FXML 
 	public void changeScreenonStart(ActionEvent event) throws IOException {
 		GameController game = new GameController();
-		game.setWidth();
-		game.setHeight();
+		
 		Scene sceneGame = new Scene(game.createDynamicGrid());
 		game.passScene(sceneGame);
+		MPApp.setScene(sceneGame);
 		sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	
+		game.setTimerPopup();
+		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+		
+		stage.centerOnScreen();
 		stage.setScene(sceneGame);
 		stage.setTitle("Minesweeper: Start Game");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
