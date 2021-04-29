@@ -156,22 +156,7 @@ public class MPApp {
 			return false;
 		}
 		
-		// add username to file
-		/*
-		public static void addUserName(String username) throws IOException {
-			HashMap<String, String> hash=new HashMap<String,String>();
-			Properties properties=new Properties();
-			String val = getPassedValue();
-			String complete = String.format("%-14s%s", val, "20secs");
-			hash.put(username, complete);
-			properties.putAll(hash);
-			File file=new File("userIDs.properties");
-			FileOutputStream writer=new FileOutputStream(file,true);
-			properties.store(writer, null);
-			writer.close();
-
-		}
-		*/
+		
 	public static void addUserInfo() throws IOException {
 		File file = new File("userInfo.txt");
 
@@ -186,27 +171,15 @@ public class MPApp {
 		// write username to file
 		String info = String.format("%-6s %-14s  %s", userName, val, sec);
 		writer.write(info + System.lineSeparator());
-		//writer.write(userName + " " + val + " " + sec + System.lineSeparator());
+		
 		
         writer.close();
 		
 	}
 	public static void addTime() throws IOException {
-		//File file = new File("times.txt");
-
-		// if file doesn't exists make it  
-		//if(!file.exists()) {
-			//file.createNewFile();
-		//}
-				
-		//FileWriter writer = new FileWriter(file, true);
-			
-		//System.out.println("secondsPassed is " + secondsPassed);
-		// write username to file
-		//writer.write(secondsPassed + System.lineSeparator());
-        //writer.close();
-        
+		
         updateSeconds(0); // Reset seconds variable
+		
 	}
 
 	public static void setScene(Scene sceneGame) {
