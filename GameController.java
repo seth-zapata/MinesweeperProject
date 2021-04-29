@@ -337,6 +337,7 @@ public class GameController {
 				
 				coolFace();
 				MPApp.stopTimerGame();
+				MPApp.addUserInfo();
 				MPApp.addTime();
 				
 				return;
@@ -445,7 +446,12 @@ public class GameController {
 				if (gameInstance > 0) {
 					flagCounter = 0;
 					score = 0;
-					MPApp.stopTimerGame();
+					try {
+						MPApp.stopTimerGame();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					reset.setGraphic(imageView);
 					time.setText("Time: 0");
 					sceneCurrGame.setRoot(createDynamicGrid());

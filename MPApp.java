@@ -3,11 +3,13 @@
 package model;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
@@ -46,6 +48,8 @@ public class MPApp {
 	static ActionEvent event;
 	
 	static Text time;
+	
+	public static String userName = "";
 	
 	public static void updateSeconds(int seconds) {
 		secondsPassed = seconds;
@@ -127,29 +131,33 @@ public class MPApp {
 			
 			}
 			else if(Pattern.matches("[A-Z]{3}", userName)) {
-				File file=new File("userIDs.properties");
-				FileInputStream reader=new FileInputStream(file);
-				Properties properties=new Properties();
-				properties.load(reader);
-				reader.close();
-				if(properties.containsKey(userName)) {
-					Alert a = new Alert(AlertType.ERROR);
-					a.setTitle("Error");
-					a.setHeaderText("Username taken");
-					a.setContentText("Please enter new username");
-					a.show();
-					return true;
+				try {
+					File file=new File("userInfo.txt");
+					@SuppressWarnings("resource")
+					Scanner scnr=new Scanner(file);
+					while(scnr.hasNextLine()) {
+						String line = scnr.nextLine();
+						if(line.contains(userName)) {
+							Alert a = new Alert(AlertType.ERROR);
+							a.setTitle("Error");
+							a.setHeaderText("Username taken");
+							a.setContentText("Please enter new username");
+							a.show();
+							return true;
+						}
+					}
+					scnr.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+					
 				}
-				else {
-					return false;
-				}
-
 			}
 			
 			return false;
 		}
 		
 		// add username to file
+		/*
 		public static void addUserName(String username) throws IOException {
 			HashMap<String, String> hash=new HashMap<String,String>();
 			Properties properties=new Properties();
@@ -163,9 +171,9 @@ public class MPApp {
 			writer.close();
 
 		}
-	
-	public static void addTime() throws IOException {
-		File file = new File("times.txt");
+		*/
+	public static void addUserInfo() throws IOException {
+		File file = new File("userInfo.txt");
 
 		// if file doesn't exists make it  
 		if(!file.exists()) {
@@ -173,11 +181,30 @@ public class MPApp {
 		}
 				
 		FileWriter writer = new FileWriter(file, true);
-			
-		System.out.println("secondsPassed is " + secondsPassed);
+		String val = getPassedValue();
+		String sec = String.valueOf(secondsPassed);
 		// write username to file
-		writer.write(secondsPassed + System.lineSeparator());
+		String info = String.format("%-6s %-14s  %s", userName, val, sec);
+		writer.write(info + System.lineSeparator());
+		//writer.write(userName + " " + val + " " + sec + System.lineSeparator());
+		
         writer.close();
+		
+	}
+	public static void addTime() throws IOException {
+		//File file = new File("times.txt");
+
+		// if file doesn't exists make it  
+		//if(!file.exists()) {
+			//file.createNewFile();
+		//}
+				
+		//FileWriter writer = new FileWriter(file, true);
+			
+		//System.out.println("secondsPassed is " + secondsPassed);
+		// write username to file
+		//writer.write(secondsPassed + System.lineSeparator());
+        //writer.close();
         
         updateSeconds(0); // Reset seconds variable
 	}

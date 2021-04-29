@@ -29,7 +29,7 @@
                   <Glow level="1.0" />
                </effect>
             </Text>
-            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="678.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
+            <Text fx:id="playerTimeScore1" fill="GREEN" layoutX="692.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time">
                <font>
                   <Font name="Courier New Bold" size="29.0" />
                </font>

@@ -34,7 +34,8 @@ public class DifficultyController {
 		} else {
 			// add username to file
 			MPApp.setPassedValue("Beginner");
-			MPApp.addUserName(username.getText());
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "beginner"
 			
@@ -53,7 +54,8 @@ public class DifficultyController {
 		else {
 			MPApp.setPassedValue("Intermediate");
 			// add username to file
-			MPApp.addUserName(username.getText());
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "intermediate"
 			
@@ -72,7 +74,8 @@ public class DifficultyController {
 		else {
 			MPApp.setPassedValue("Advanced");
 			// add username to file
-			MPApp.addUserName(username.getText());
+			MPApp.userName = username.getText();
+			//MPApp.addUserName(username.getText());
 			username.clear();
 			// set flag to "advanced"
 			
