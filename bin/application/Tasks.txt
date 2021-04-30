@@ -1,0 +1,14 @@
+Roles/Goals for Minesweeper Project
+
+Jhonathan - Difficulty scene; have difficulty set on start scene, scene change to difficulty, then start game (insert name for scorekeeping)
+	- Deadline: Friday May 23rd
+Karla - Rules and High score scenes; design and skeleton code (display placeholder info for viewing)
+	- Deadline: Friday May 23rd
+Seth - Start scene; divide up tasks with Paul, work on grid functions and capturing score info
+Paul - Start scene; divide up tasks with Seth, work on grid functions and capturing score info
+	- How to make grid
+	- How to set a timer
+	- How to right click/set a bomb
+	- How to clear many squares when user clicks a correct button
+
+	- Deadline: (Mostly functional game) Friday May 23rd
