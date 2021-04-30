@@ -1,5 +1,5 @@
 # Minesweeper Project
-Minesweeper game implementation through JavaFX Project
+Name of project: Minesweeper
 
 Name of your team: Minesweepers 
 
