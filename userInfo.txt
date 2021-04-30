@@ -5,4 +5,3 @@ ZZZ    Beginner        901
 DDD    Beginner        521
 WAS    Intermediate    600
 DUD    Advanced        999
-ZOO    Beginner        355
