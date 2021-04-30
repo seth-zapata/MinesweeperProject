@@ -5,7 +5,7 @@ Name of your team: Minesweepers
 
 Team member names: Seth Zapata, Jhonathan Mejia, Paul Perryman, Karla De La Cruz
 
-Short description of the app: For our project we’ve recreated the game Minesweeper. The main screen will give the user 3 buttons to click, to play the game, to go over the rules of the game, and to look at the highscores. 
+Short description of the app: For our project we’ve recreated the game Minesweeper. The main screen will give the user 3 buttons to click; (1) To play the game. (2) To go over the rules of the game. (3) To look at the highscores. 
 
 Known bugs: N/A
 
