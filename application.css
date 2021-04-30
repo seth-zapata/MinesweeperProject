@@ -157,14 +157,24 @@
 	-fx-alignment:center;
 }
 
-#diffText{
+#diff1Text{
 	-fx-font-family: "Joystix";
-	-fx-font-size: 10.5px;
+	-fx-font-size: 15px;
+}
+
+#diff2Text{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 16px;
+}
+
+#diff3Text{
+	-fx-font-family: "Joystix";
+	-fx-font-size: 14px;
 }
 
 #diffLabel, #enterUsername{
 	-fx-font-family: "Joystix";
-	-fx-font-size:23px;
+	-fx-font-size:30px;
 }
 
 
