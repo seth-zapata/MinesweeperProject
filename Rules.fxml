@@ -72,6 +72,6 @@
             <Font size="19.0" />
          </font>
       </Button>
-      <Label fx:id="how_to_play" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="248.0" layoutY="11.0" stylesheets="@application.css" text="HOW TO PLAY" />
+      <Label fx:id="how_to_play" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="28.0" stylesheets="@application.css" text="HOW TO PLAY" />
    </children>
 </AnchorPane>

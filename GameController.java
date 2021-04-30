@@ -1,5 +1,5 @@
 package application;
-import java.io.FileNotFoundException;
+import java.io.FileNotFoundException; 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,39 +27,17 @@ import model.MPApp;
  
 public class GameController {
 	
-	public Scene sceneCurrGame;
-	// TODO: Get buttons to display on the same screen as the game
-	// This may have to be done without Scenebuilder, but that's not for certain
-	
+	// Scene of the current game running
+	public Scene sceneCurrGame; 
+
+	// Buttons instantiated by setTimerPopup()
 	@FXML
 	private Button reset, back, help;
-	
-	/* All of the three screen change methods below
-	 * should be displayed as buttons on the game screen.
+
+	/* Sets the width of the grid based on the difficulty selected and stored in MPApp
+	 * Returns the width
 	 */
-	
-	@FXML 
-	public void changeScreenonBack(ActionEvent event) throws IOException {
-		MainController home = new MainController();
-		home.changeScreenonBack(event);
-	}
-	
-	@FXML 
-	public void changeScreenonReset(ActionEvent event) throws IOException {
-		MainController home = new MainController();
-		home.changeScreenonBack(event);
-	}
-	
-	@FXML 
-	public void changeScreenonHelp(ActionEvent event) throws IOException {
-		MainController home = new MainController();
-		home.changeScreenonRules(event);
-	}
-	
-	
-	// Sets the width of the grid based on the difficulty selected and stored in MPApp
-	// These sizes can be changed if needed
-	// Returns the width
+
 	public int setWidth() {
 		int width = 0;
 		if (MPApp.getPassedValue().equals("Beginner")) {
@@ -77,9 +55,9 @@ public class GameController {
 		return width;
 	}
 	
-	// Sets the height of the grid based on the difficulty selected and stored in MPApp
-	// These sizes can be changed if needed
-	// Returns the height
+	/* Sets the height of the grid based on the difficulty selected and stored in MPApp
+	 * Returns the height
+	 */
 	public int setHeight() {
 		int height = 0;
 		if (MPApp.getPassedValue().equals("Beginner")) {
@@ -97,6 +75,7 @@ public class GameController {
 		return height;
 	}
 	
+	// Width and height are dynamically based on the difficulty passed (from setHeight and setWidth methods)
 	private final int square_size = 40, width = setWidth(), height = setHeight(), numSquarebyLength = width/square_size, numSquarebyHeight = height/square_size;
 	public Pane root;
 	public Text scoreTally;
@@ -142,8 +121,7 @@ public class GameController {
 				}
 			} flagCounter = totalMines;
 			displayFlags();
-		}//System.out.println("TRUE flagcounter is " + flagCounter);
-	
+		}
 		return root;
 	}
 	
@@ -190,42 +168,61 @@ public class GameController {
 		// Properties of a square in the game
 		public int square_xCoord;
 		public int square_yCoord;
-		public boolean isMine, isRevealed = false;
+		public boolean isMine, isRevealed = false, mineFlag = false, questionFlag = false;
 		
 		public int option = 0; // Option for multiple right clicks on a square
-		
+				
 		public Rectangle square_perimeter = new Rectangle(square_size - 2, square_size - 2); // 
 		public Text square_value = new Text(); // Text holds the number of adjacent mines, or an empty string
-		
+				
 		public Square(int square_xCoord, int square_yCoord, boolean isMine) {
 			// Instantiating a square in the game, from createDynamicGrid() most likely
 			this.square_xCoord = square_xCoord;
 			this.square_yCoord = square_yCoord;
 			this.isMine = isMine;
-			
+					
 			// Sets the visual properties of the square and text
 			square_perimeter.setStroke(Color.BLACK);
-			square_value.setFill(Color.GRAY);
-			square_value.setFont(Font.font(18));
-			
+			square_perimeter.setFill(Color.LIGHTGRAY);
+			square_value.setFill(Color.BLACK);
+					square_value.setFont(Font.font(18));
+					
 			if (isMine) {
-				square_value.setText("X"); // If the square is designated as isMine==true, then set the text to an "X"
+				// If the square is designated as isMine==true, then set the text to an ""
+				square_value.setText("");
 			} else {
 				square_value.setText(""); // Else just leave the square text blank
 				totalEmptySquares++;
 			}
-			
+					
 			square_value.setVisible(false); // Hide the square values at the start of the game
 			getChildren().addAll(square_perimeter, square_value); // Add the square to the children nodes of the screen
-			
+					
 			setTranslateX(square_xCoord * square_size); // Returns the x coordinate of each square, if needed
 			setTranslateY(square_yCoord * square_size); // Returns the y coordinate of each square, if needed
+					
+			// As the mouse is dragged over the square, update the color fill to black
+			square_perimeter.setOnMouseEntered(e -> {
+				if (isRevealed == false && this.option % 3 == 0) {
+				square_perimeter.setFill(Color.BLACK);
+				}
+			});
 			
+			// As the mouse is dragged off of the square, update the color fill back to lightgray
+			square_perimeter.setOnMouseExited(e -> {
+				if (!isRevealed) {
+					if (this.option % 3 == 0) {
+						square_perimeter.setFill(Color.LIGHTGRAY);
+					}
+				}
+			});
+			
+			// When mouse is clicked (left or right), do something specific
 			square_perimeter.setOnMouseClicked(e -> {
+						
 				if (e.getButton() == MouseButton.PRIMARY) { // On a left-click, go to reveal() to reveal the square
 					try {
 						timerStart+=1;
-						//System.out.println("timerStart is " + timerStart);
 						if (timerStart == 0) {
 							// Open dialog box to display timer
 							MPApp.startTimer();
@@ -241,31 +238,45 @@ public class GameController {
 					if (!isRevealed) { // If the square hasn't been revealed yet
 						this.option = this.option + 1;
 						if (this.option % 3 == 1) { // First right-click will mark the square as a possible mine
-							Image img = new Image("application/unsureOfMine.png"); // Mine image
-							square_perimeter.setFill(new ImagePattern(img));
+							Image img1 = new Image("application/flag.png"); // Mine image;
+							square_perimeter.setFill(new ImagePattern(img1));
+							this.mineFlag = true;
+							this.questionFlag = false;
 							flagCounter--; // Player uses one attempt at marking a possible mine square
 							displayFlags();
-							//System.out.println("Flag counter: " + flagCounter);
+									
 						}
 						if (this.option % 3 == 2) { // Second right-click will mark the square as a question mark (unsure)
-							Image img = new Image("application/questionmark.png"); // Question mark image
-							square_perimeter.setFill(new ImagePattern(img));
+							Image img2 = new Image("application/questionmark.png"); // Question mark image
+							square_perimeter.setFill(new ImagePattern(img2));
+							this.mineFlag = false;
+							this.questionFlag = true;
 						}
 						if (this.option % 3 == 0) { // Third right-click will just black out the square as it originally was
 							flagCounter++; // Player gains back the attempt at flagging the square for a mine
 							displayFlags();
-							//System.out.println("Flag counter: " + flagCounter);
-							square_perimeter.setFill(Color.BLACK); // Covers the square again
+							this.mineFlag = false;
+							this.questionFlag = false;
+							square_perimeter.setFill(Color.LIGHTGRAY); // Covers the square again
 						}
 					}
 				}
 			});
 		}
+		
+		/* On left mouse click, or win/lose, this function
+		 * will reveal the necessary sqaures based on the condition
+		 * passed by user (mouse click, win/lose), as well as 
+		 * special displays for flags and missed bombs.
+		 */
 		public void reveal() throws IOException, InterruptedException {
+			Image img = new Image("application/Mine.png"); // Mine image;
+			Image imgFlagMineFail = new Image("application/flagMineFail.png"); // Mine flag fail image;
+	
 			if(isRevealed) {
 				return; // Square is already visible
 			}
-			
+					
 			if (isMine) {
 				for (int y = 0; y < numSquarebyHeight; y++) {
 					for (int x = 0; x < numSquarebyLength; x++) {
@@ -273,16 +284,34 @@ public class GameController {
 						if (sqr.isMine) { // Reveals all mines only when game is over (mine square is clicked)
 							sqr.isRevealed = true;
 							sqr.square_value.setVisible(true);
-							sqr.square_perimeter.setFill(null);
+							sqr.square_perimeter.setFill(new ImagePattern(img));
+							if (sqr.questionFlag) {
+								sqr.isRevealed = true;
+								sqr.square_value.setVisible(true);
+								sqr.square_perimeter.setFill(new ImagePattern(imgFlagMineFail));
+							}
+						} 
+						else {
+							if (sqr.mineFlag) { // Player marked a square with a bomb flag, but it wasn't a bomb
+										
+							Image imgFail = new Image("application/unsureOfMineFail.png");
+										
+							sqr.isRevealed = true;
+							sqr.square_value.setVisible(false);
+							sqr.square_perimeter.setFill(new ImagePattern(imgFail));
+							}
+							if (sqr.questionFlag) { // Player marked a square with a question flag, but it was just a safe square
+								sqr.isRevealed = true;
+								sqr.square_value.setVisible(true);
+								sqr.square_perimeter.setFill(Color.RED);
+							}
+									
 						}
 						sqr.square_perimeter.setOnMouseClicked(null); // Disables mouse clicks on squares since game is over
 					}
 				}
-
-				//System.out.println("Game Over: You lost :(");
-				//System.out.println("Final Score: " + score); 
-				
-				MPApp.updateScore(score);
+						
+				MPApp.updateScore(score); // Update (pseudo) score
 				score = 0;
 				totalMines = 0;
 				numericalSquares = 0;
@@ -291,9 +320,9 @@ public class GameController {
 				timerStart = -1;
 				gameInstance+=1;
 				
-				lostFace();
-				MPApp.stopTimerGame();
-				MPApp.addTime();
+				lostFace(); // Display lost face on button reset in popup window
+				MPApp.stopTimerGame(); // Stop the timer in the game
+				MPApp.resetTime(); // Reset secondsPasssed variable in model file
 				return;
 			} else { // Case where game recursively searches for empty squares; we don't want to update score
 				if (square_value.getText().isEmpty()) {
@@ -306,27 +335,28 @@ public class GameController {
 					isRevealed = true;
 					square_value.setVisible(true);
 					square_perimeter.setFill(null);
-					//System.out.println("Score updated by 1");
 					score+=1;
 				}
 			}
 			if (score == numericalSquares) { // If the score is equal to all possible numberically filled squares, all mines are found, and game is over
-				
+						
 				for (int y = 0; y < numSquarebyHeight; y++) {
 					for (int x = 0; x < numSquarebyLength; x++) {
 						Square sqr = gameGrid[x][y]; // Goes through all squares in the grid
 						if (sqr.isMine) { // Reveals all mines only when game is over (mine square is clicked)
 							sqr.isRevealed = true;
 							sqr.square_value.setVisible(true);
-							sqr.square_perimeter.setFill(null);
+							sqr.square_perimeter.setFill(new ImagePattern(img));
 						}
-						sqr.square_perimeter.setOnMouseClicked(null); // Disables mouse clicks on squares since game is over
-					}
-				}
-				
-				//System.out.println("You Win!");
-				//System.out.println("Final Score " + score);
-
+						if (sqr.square_value.getText().isEmpty()) { // Case where square is empty, reveal the empty square
+							isRevealed = true;
+							square_value.setVisible(true);
+							square_perimeter.setFill(null);
+								}
+								sqr.square_perimeter.setOnMouseClicked(null); // Disables mouse clicks on squares since game is over
+							}
+						}
+						
 				MPApp.updateScore(score);
 				score = 0;
 				totalMines = 0;
@@ -338,7 +368,7 @@ public class GameController {
 				coolFace();
 				MPApp.stopTimerGame();
 				MPApp.addUserInfo();
-				MPApp.addTime();
+				MPApp.resetTime();
 				
 				return;
 			}
@@ -357,12 +387,13 @@ public class GameController {
 			}
 		}
 	}
-
+	
+	
+	// Pass the scene from the Start Controller so we can reset the game screen using sceneCurrGame.setRoot(createDynamicGrid())
 	public void passScene(Scene sceneGame) {
-		sceneCurrGame = sceneGame; // Pass the scene from the Start Controller so we can reset the game screen using sceneCurrGame.setRoot(createDynamicGrid())
+		sceneCurrGame = sceneGame; 
 	}
 	
-	// holds the amount of seconds that have passed
 		int secondsPassed = 0;
 		
 		Text time = new Text();
@@ -374,17 +405,28 @@ public class GameController {
 		Stage smallStage = new Stage();
 		Scene smallScene;
 	
-	public void setTimerPopup() throws FileNotFoundException {
-		time.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
-		flagsText.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
 		
-		Image image = new Image("application/happy.jpg");
+	/* Creates a new stage that will dynamically 
+	 * display the timer and the flag counter
+	 * for the game. Also creates buttons for
+	 * going to home, rules, and resetting the 
+	 * game on win/lose.
+	 */
+	public void setTimerPopup() throws FileNotFoundException {
+		// Set text fonts and fills
+		time.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
+		time.setFill(Color.RED);
+		flagsText.setFont(Font.font("ka1.tff", FontWeight.BOLD, FontPosture.REGULAR, 40));
+		flagsText.setFill(Color.RED);
+		
+		Image image = new Image("application/happy.jpg"); // Image displayed on reset button while game is not lost
 		ImageView imageView = new ImageView(image);
 		
-		imageView.setFitHeight(100);
-		imageView.setFitWidth(100);
-		imageView.setPreserveRatio(true);
+		imageView.setFitHeight(105);
+		imageView.setFitWidth(105);
+		imageView.setPreserveRatio(false);
 		
+		//Set reset button format
 		reset = new Button();
 		reset.setMinSize(100, 100);
 		reset.setMaxSize(100, 100);
@@ -393,114 +435,141 @@ public class GameController {
 		reset.setTranslateY(-102);
 		reset.setGraphic(imageView);
 		
+		// On mouse click of the home button, stop game and go back home
 		EventHandler <ActionEvent> home = new EventHandler <ActionEvent>() {
 			@FXML
 			public void handle(ActionEvent e) {
 				MainController homeScreen = new MainController();
 				Stage stage = (Stage) back.getScene().getWindow();
-				try {
-					stage.close();
+				try {				
+					stage.close(); // Close the popup window
 					MPApp.closeScene();
-					MPApp.stopTimerGame();
-					homeScreen.changeScreenonBack(e);
+					
+					if (MPApp.getTimerCheck()) { 
+						MPApp.stopTimerGame();
+					}
+					
+					homeScreen.changeScreenonBack(e); // Go back home
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		};
 		
+		// On mouse click of the help button, stop game and go to the rules screen
 		EventHandler <ActionEvent> rules = new EventHandler <ActionEvent>() {
 			@FXML
 			public void handle(ActionEvent e) {
 				MainController rulesScreen = new MainController();
 				Stage stage = (Stage) help.getScene().getWindow();
 				try {
-					stage.close();
+					stage.close(); // Close the popup window
 					MPApp.closeScene();
-					MPApp.stopTimerGame();
-					rulesScreen.changeScreenonRules(e);
+					
+					if (MPApp.getTimerCheck()) { 
+						MPApp.stopTimerGame();
+					}
+					
+					rulesScreen.changeScreenonRules(e); // Go to rules screen
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		};
 		
+		// Set format for back "home" button
 		back = new Button("HOME");
-		back.setMinSize(70, 50);
-		back.setMaxSize(70, 50);
+		back.setMinSize(90, 50);
+		back.setMaxSize(90, 50);
 		
 		back.setTranslateX(20);
 		back.setTranslateY(-82);
-
+		
+		// Set format for help button
 		help = new Button("HELP");
-		help.setMinSize(70, 50);
-		help.setMaxSize(70, 50);
+		help.setMinSize(90, 50);
+		help.setMaxSize(90, 50);
 		help.setTranslateX(220);
 		help.setTranslateY(-132);
 		
+		// When the player clicks the reset button
 		EventHandler <ActionEvent> event = new EventHandler <ActionEvent>() {
 			public void handle(ActionEvent e) {
 				score = MPApp.getScore();
 				score+=1; // Case where player didn't get a single square revealed (first mine is a bomb);
-				if (gameInstance > 0) {
-					flagCounter = 0;
-					score = 0;
-					try {
+				
+				try {
+					if (gameInstance > 0) {
+						// Reset timer, counters, graphic on button, and texts
+						flagCounter = 0;
+						score = 0;
 						MPApp.stopTimerGame();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						reset.setGraphic(imageView);
+						time.setText("Time: 0");
+						sceneCurrGame.setRoot(createDynamicGrid()); // Create a new game grid instance
 					}
-					reset.setGraphic(imageView);
-					time.setText("Time: 0");
-					sceneCurrGame.setRoot(createDynamicGrid());
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 			}
 		};
 		
+		// On button action, do specific tasks
 		reset.setOnAction(event);
 		back.setOnAction(home);
 		help.setOnAction(rules);
-
+		
+		// Set initial text content
 		time.setText("Time: " + secondsPassed);
 		flagsText.setText("Flags: " + flagCounter);
+		
+		// Add objects to the Vbox
 		box.getChildren().addAll(time, flagsText, imageView, reset, back, help);
 		
+		box.setStyle("-fx-background-color: black");
+		
+		// Add Vbox to scene, and set scene style
 		smallScene = new Scene(box, 350, 200);
+		smallScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		
 		smallStage.setScene(smallScene);
 		smallStage.setTitle("Minesweeper: Timer and Flags");
 		smallStage.getIcons().add(new Image("application/minesweeperIcon.jpg"));
 		
-		smallStage.setX(1200);
-		smallStage.setY(200);
+		// Create the appropriate window size in reference to size of grid game (based on difficulty)
+		smallStage = MPApp.setPopupWindowSize(smallStage);
+
 		MPApp.getTime(time);
-		smallStage.show();
-		
+		smallStage.show(); // Show the small window
 	}
 	
+	// Updates the flags counter in popup window when 
+	// player right clicks on a square; display only
 	public void displayFlags() {
-		flagsText.setText("Flags: " + flagCounter);
-	}
+				flagsText.setText("Flags: " + flagCounter);
+			}
 	
+	// Creates the lost face image on reset button in the popup
+	// window, when the player loses
 	public void lostFace() {
-		Image image = new Image("application/lost.png");
-		ImageView imageView = new ImageView(image);
-		
-		imageView.setFitHeight(100);
-		imageView.setFitWidth(120);
-		imageView.setPreserveRatio(true);
-		reset.setGraphic(imageView);
-	}
+				Image image = new Image("application/lost.png");
+				ImageView imageView = new ImageView(image);
+				
+				imageView.setFitHeight(130);
+				imageView.setFitWidth(130);
+				imageView.setPreserveRatio(false);
+				reset.setGraphic(imageView); // Change the image on button
+			}
 	
+	// Creates the cool face image on reset button in the popup
+	// window, when the player wins
 	public void coolFace() {
-		Image image = new Image("application/cool.png");
-		ImageView imageView = new ImageView(image);
-		
-		imageView.setFitHeight(100);
-		imageView.setFitWidth(120);
-		imageView.setPreserveRatio(true);
-		reset.setGraphic(imageView);
+			Image image = new Image("application/cool.png");
+			ImageView imageView = new ImageView(image);
+				
+			imageView.setFitHeight(115);
+			imageView.setFitWidth(110);
+			imageView.setPreserveRatio(false);
+			reset.setGraphic(imageView); // Change the image on button
 	}
 }

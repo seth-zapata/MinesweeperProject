@@ -87,19 +87,28 @@ public class DifficultyController {
 	// takes user to game screen
 	@FXML 
 	public void changeScreenonStart(ActionEvent event) throws IOException {
-		GameController game = new GameController();
+GameController game = new GameController();
 		
 		Scene sceneGame = new Scene(game.createDynamicGrid());
+		
 		game.passScene(sceneGame);
 		MPApp.setScene(sceneGame);
+		
+		// Pass scene of game to model file for future reseting 
+		MPApp.passX(sceneGame.getX());
+		MPApp.passY(sceneGame.getY());
+		
 		sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	
 		game.setTimerPopup();
 		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		
-		stage.centerOnScreen();
 		stage.setScene(sceneGame);
+		
+		// Alter window size based on the difficulty passed
+		stage = MPApp.setGameWindowSize(stage);
+		
 		stage.setTitle("Minesweeper: Start Game");
 		stage.getIcons().add(new Image(getClass().getResourceAsStream("minesweeperIcon.jpg")));
 		stage.show();

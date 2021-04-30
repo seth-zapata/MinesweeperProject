@@ -77,7 +77,7 @@
                   <Font name="Courier New Bold" size="31.0" />
                </font>
             </Text>
-            <Label fx:id="diffTitle" layoutX="31.0" layoutY="-27.0" prefHeight="76.0" prefWidth="791.0" text="Select Difficulty" />
+            <Label fx:id="diffTitle" layoutX="54.0" layoutY="-24.0" prefHeight="76.0" prefWidth="791.0" text="Select Difficulty" />
             <Text fx:id="diffLabel" fill="WHITE" layoutX="617.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced">
                <font>
                   <Font name="Courier New Bold" size="31.0" />
