@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="752.0" prefWidth="921.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Pane layoutX="193.0" layoutY="3.0" stylesheets="@application.css">
+         <children>
+            <Button fx:id="highscore" layoutX="89.0" layoutY="537.0" mnemonicParsing="false" onAction="#changeScreenonHighScore" prefHeight="124.0" prefWidth="340.0" text="High Scores" textAlignment="CENTER">
+               <font>
+                  <Font size="48.0" />
+               </font></Button>
+            <Button fx:id="start" layoutX="87.0" layoutY="169.0" mnemonicParsing="false" onAction="#changeScreenonStart" prefHeight="124.0" prefWidth="340.0" text="Start">
+               <font>
+                  <Font size="36.0" />
+               </font></Button>
+            <Button fx:id="rules" layoutX="88.0" layoutY="346.0" mnemonicParsing="false" onAction="#changeScreenonRules" prefHeight="124.0" prefWidth="340.0" text="Rules">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Button>
+            <Label fx:id="title" alignment="CENTER" layoutX="112.0" layoutY="26.0" text="Minesweeper" textAlignment="CENTER">
+               <font>
+                  <Font name="Lucida Sans Typewriter Regular" size="12.0" />
+               </font></Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
