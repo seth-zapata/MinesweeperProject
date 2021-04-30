@@ -1,4 +1,4 @@
-# MinesweeperProject
+# Minesweeper Project
 Minesweeper game implementation through JavaFX Project
 
 Name of your team: Minesweepers 
