@@ -13,5 +13,5 @@ Known bugs:
 Log in info: Once the start button is clicked the user will be taken to the difficulties scene and will be required to enter a username. If the user wins the game, the username will be shown in the high scores screen.
 
 Versions or other requirements: The app was built using Java 8.0 and Scene Builder 2.0. All files (except MPApp.java, winner.GIF, and userInfo.txt) should be placed inside the application package in Eclipse. MPApp.java will be placed in the model package. 
-    - "MPApp.java" will go in the model package.
-    - "userInfo.txt" and "winner.GIF" should be placed in the "MinesweeperProject" folder where "bin" and "src" are found.
+    "MPApp.java" will go in the model package.
+    "userInfo.txt" and "winner.GIF" should be placed in the "MinesweeperProject" folder where "bin" and "src" are found.
